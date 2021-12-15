@@ -1,4 +1,4 @@
-import {serialize, deserialize} from "../index";
+import {serializeMember, deserializeMember} from "../index";
 import type {Member} from "@treecg/types";
 import { DataFactory } from "rdf-data-factory";
 
@@ -23,22 +23,22 @@ describe('serialize-member', () => {
     }
     
     test('Test serialize method', () => {
-        let serializedMember = serialize(member);
+        let serializedMember = serializeMember(member);
         expect(serializedMember).toBeInstanceOf(Object);
         console.log(serializedMember);
     });
 
     
     test('Test deserialize method', () => {
-        let serializedMember = serialize(member);
-        let deserializedMember = deserialize(serializedMember);
+        let serializedMember = serializeMember(member);
+        let deserializedMember = deserializeMember(serializedMember);
         expect(deserializedMember).toBeDefined();
     });
     
 
     test('Test serialize & deserialise method', () => {
-        let serializedMember = serialize(member);
-        let deserializedMember = deserialize(serializedMember);
+        let serializedMember = serializeMember(member);
+        let deserializedMember = deserializeMember(serializedMember);
         expect(deserializedMember).toEqual(member);
     });
 

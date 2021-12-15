@@ -1,7 +1,7 @@
 import * as RdfString from "rdf-string";
 import type { Member } from "@treecg/types";
 
-export function serialize(member: Member): object {
+export function serializeMember(member: Member): object {
     let quads = [];
     for (const quad of member.quads) {
         quads.push(RdfString.quadToStringQuad(quad));
@@ -9,7 +9,7 @@ export function serialize(member: Member): object {
     return {id:member.id, quads:quads};
 }
 
-export function deserialize(member: object): Member {
+export function deserializeMember(member: object): Member {
     let quads = [];
     for (const quad of member["quads"]) {
         quads.push(RdfString.stringQuadToQuad(quad));
